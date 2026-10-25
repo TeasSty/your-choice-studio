@@ -1,5 +1,6 @@
 import { studio } from '../data/studio'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { asset } from '../lib/assets'
 
 export function Space() {
   const ref = useScrollReveal<HTMLElement>()
@@ -19,7 +20,7 @@ export function Space() {
         <figure className="space__hero-shot" data-reveal>
           <div className="media-zoom">
             <img
-              src="/images/space/wide.jpg"
+              src={asset('images/space/wide.jpg')}
               alt="Зал №3 YOUR CHOICE — бетонно-серый минимализм и естественный свет"
               loading="lazy"
               width={2000}
@@ -34,7 +35,7 @@ export function Space() {
           <figure className="space__portrait" data-reveal>
             <div className="media-zoom">
               <img
-                src="/images/space/detail.jpg"
+                src={asset('images/space/detail.jpg')}
                 alt="Зал Mini YOUR CHOICE — камерный интерьер с диваном"
                 loading="lazy"
                 width={1200}

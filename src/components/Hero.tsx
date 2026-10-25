@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { studio } from '../data/studio'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { asset } from '../lib/assets'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -60,7 +61,7 @@ export function Hero({ onChooseHall }: HeroProps) {
       <div className="hero__media" aria-hidden="false">
         <img
           className="hero__media-img"
-          src="/images/halls/hall3.jpg"
+          src={asset('images/halls/hall3.jpg')}
           alt="Зал №3 фотостудии YOUR CHOICE — бетонный интерьер с естественным светом"
           width={1920}
           height={2400}

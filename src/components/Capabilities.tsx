@@ -1,5 +1,6 @@
 import { capabilities } from '../data/studio'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { asset } from '../lib/assets'
 
 export function Capabilities() {
   const ref = useScrollReveal<HTMLElement>()
@@ -19,7 +20,7 @@ export function Capabilities() {
         <div className="capabilities__media" data-reveal>
           <div className="media-zoom">
             <img
-              src="/images/equipment/lights.jpg"
+              src={asset('images/equipment/lights.jpg')}
               alt="Зал №3 YOUR CHOICE — пространство со студийным светом (фото из VK)"
               loading="lazy"
               width={1800}

@@ -1,5 +1,7 @@
 /** Studio facts from VK community choice.photostudio (group 156671547). */
 
+import { asset } from '../lib/assets'
+
 export const studio = {
   brandRu: 'ТВОЙ ВЫБОР',
   brandEn: 'YOUR CHOICE',
@@ -68,7 +70,7 @@ export const halls: Hall[] = [
     priceNote: 'цена из VK Market',
     description:
       'Небольшой, но функциональный зал с раскладным диваном, который трансформируется в постель. Солнечный свет в первой половине дня.',
-    image: '/images/halls/mini.jpg',
+    image: asset('images/halls/mini.jpg'),
     imageAlt: 'Зал Mini — интерьер фотостудии YOUR CHOICE, фото из VK Market',
     features: ['Раскладной диван', 'Утренний свет', 'Камерный формат'],
     status: 'confirmed',
@@ -81,7 +83,7 @@ export const halls: Hall[] = [
     priceNote: 'от 2 часов — 1 800 ₽/час (VK Market)',
     description:
       'Минималистичный зал преимущественно бетонно-серого цвета, стильное наполнение, много естественного света. Большие окна на юго-запад, высота потолков 4,5 м, площадь 63 м². С 15:00 — выразительные световые рисунки. Есть циклорама. В аренду входят два любых источника света; дополнительные — 200 ₽/час. Цветные бумажные фоны — по согласованию при бронировании.',
-    image: '/images/halls/hall3.jpg',
+    image: asset('images/halls/hall3.jpg'),
     imageAlt: 'Зал №3 — интерьер фотостудии YOUR CHOICE, фото из VK Market',
     features: ['63 м²', 'Циклорама', 'Потолки 4,5 м', '2 источника света в цене'],
     status: 'confirmed',
@@ -94,7 +96,7 @@ export const halls: Hall[] = [
     priceNote: 'от 2 часов — 1 800 ₽/час (VK Market)',
     description:
       'Просторный интерьерный зал с винтажным акцентом: бежево-молочная гамма и одна тёмная стена. Площадь 64 м², потолки 4,5 м, окна на юг и юго-запад. В аренду входят два любых источника света; доп. источники — 200 ₽/час. Есть видеопроектор; цветные фоны и модификаторы — по описанию в VK.',
-    image: '/images/halls/hall4.jpg',
+    image: asset('images/halls/hall4.jpg'),
     imageAlt: 'Зал №4 — интерьер фотостудии YOUR CHOICE, фото из VK Market',
     features: ['64 м²', 'Винтажный акцент', 'Видеопроектор', '2 источника света в цене'],
     status: 'confirmed',
@@ -108,7 +110,7 @@ export const halls: Hall[] = [
       '30 мин до съёмки бесплатно при аренде зала (нужно указать при бронировании); час гримерки к залу — доплата 150 ₽',
     description:
       'Гримерка на два рабочих места, оснащена для визажиста и мастера по причёскам. Можно арендовать отдельно как рабочее место — 300 ₽/час.',
-    image: '/images/halls/makeup.jpg',
+    image: asset('images/halls/makeup.jpg'),
     imageAlt: 'Гримерка студии YOUR CHOICE — фото из VK Market',
     features: ['2 рабочих места', 'К залу — 30 мин бесплатно', 'Отдельная аренда'],
     status: 'confirmed',
@@ -139,25 +141,25 @@ export const capabilities = [
 export const portfolioItems = [
   {
     id: 'p1',
-    src: '/images/portfolio/p1.jpg',
+    src: asset('images/portfolio/p1.jpg'),
     alt: 'Зал №4 — интерьер студии YOUR CHOICE (VK Market)',
     span: 'tall' as const,
   },
   {
     id: 'p2',
-    src: '/images/portfolio/p2.jpg',
+    src: asset('images/portfolio/p2.jpg'),
     alt: 'Зал №3 — интерьер студии YOUR CHOICE (VK Market)',
     span: 'wide' as const,
   },
   {
     id: 'p3',
-    src: '/images/portfolio/p3.jpg',
+    src: asset('images/portfolio/p3.jpg'),
     alt: 'Зал Mini — интерьер студии YOUR CHOICE (VK Market)',
     span: 'square' as const,
   },
   {
     id: 'p4',
-    src: '/images/portfolio/p4.jpg',
+    src: asset('images/portfolio/p4.jpg'),
     alt: 'Гримерка студии YOUR CHOICE (VK Market)',
     span: 'tall' as const,
   },
