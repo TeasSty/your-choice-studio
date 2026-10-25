@@ -918,10 +918,10 @@ a {
 
 /* ——— Portfolio mosaic ——— */
 .portfolio {
-  /* Tighter bottom: gallery → capabilities should not stack two huge pads */
+  /* Bottom kept short so gallery → capabilities reads as one beat */
   padding:
     clamp(3.25rem, 7vw, 5.75rem) var(--pad-x)
-    clamp(2rem, 4.5vw, 3.25rem);
+    clamp(1.35rem, 3vw, 2.1rem);
   max-width: var(--max);
   margin: 0 auto;
   background: transparent;
@@ -961,7 +961,7 @@ a {
 
 .portfolio__item--tall {
   grid-row: span 2;
-  min-height: 320px;
+  min-height: 240px;
 }
 
 .portfolio__item--wide {
@@ -995,13 +995,17 @@ a {
     gap: 2rem;
   }
 
+  /*
+    4-row mosaic fills completely — previous 3-span tall + forced col-3
+    left empty cells under p1 (rows 4–5), which read as a void before capabilities.
+  */
   .portfolio__mosaic {
-    grid-template-columns: 1.15fr 0.85fr 1fr;
-    grid-auto-rows: 150px;
+    grid-template-columns: 1.15fr 0.9fr 1fr;
+    grid-auto-rows: minmax(7.5rem, 16vh);
   }
 
   .portfolio__item--tall {
-    grid-row: span 3;
+    grid-row: span 4;
     min-height: 0;
   }
 
@@ -1018,18 +1022,19 @@ a {
 
   .portfolio__item--p4 {
     grid-column: 3;
+    grid-row: span 2;
   }
 }
 
 /* ——— Capabilities ——— */
 .capabilities {
   padding:
-    clamp(2.25rem, 5vw, 3.75rem) var(--pad-x)
+    clamp(1.5rem, 3.2vw, 2.35rem) var(--pad-x)
     clamp(3.25rem, 7vw, 5.75rem);
   max-width: var(--max);
   margin: 0 auto;
   display: grid;
-  gap: clamp(1.5rem, 3vw, 2.25rem);
+  gap: clamp(1.25rem, 2.5vw, 1.85rem);
 }
 
 .capabilities__head {
@@ -1038,7 +1043,7 @@ a {
 
 .capabilities__layout {
   display: grid;
-  gap: clamp(1.75rem, 3.5vw, 2.75rem);
+  gap: clamp(1.5rem, 3vw, 2.35rem);
   align-items: start;
 }
 
@@ -1052,7 +1057,7 @@ a {
 
 .capabilities__copy {
   display: grid;
-  gap: 1.35rem;
+  gap: 1.15rem;
   align-content: start;
 }
 
@@ -1068,7 +1073,7 @@ a {
   display: grid;
   grid-template-columns: 3.2rem 1fr;
   gap: 0.85rem;
-  padding: 1.05rem 0;
+  padding: 0.95rem 0;
   border-top: 1px solid var(--line);
 }
 
@@ -1102,24 +1107,41 @@ a {
 }
 
 @media (min-width: 960px) {
-  .capabilities__layout {
-    grid-template-columns: 0.95fr 1.05fr;
+  /* One composition: title rides with the list column; media anchors left */
+  .capabilities {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    grid-template-areas:
+      'media head'
+      'media copy';
+    column-gap: clamp(2rem, 3.5vw, 3.25rem);
+    row-gap: 0.65rem;
     align-items: start;
-    gap: clamp(2rem, 3.5vw, 3.25rem);
+  }
+
+  .capabilities__head {
+    grid-area: head;
+    max-width: none;
+  }
+
+  .capabilities__layout {
+    display: contents;
   }
 
   .capabilities__media {
+    grid-area: media;
     position: sticky;
     top: calc(var(--header-h) + 1.25rem);
+    align-self: start;
   }
 
   .capabilities__media .media-zoom {
     aspect-ratio: 4 / 5;
-    max-height: min(36rem, 58vh);
+    max-height: min(34rem, 62vh);
   }
 
   .capabilities__copy {
-    padding-top: 0.25rem;
+    grid-area: copy;
+    padding-top: 0;
   }
 }
 
@@ -1130,46 +1152,75 @@ a {
   padding: 0;
   max-width: none;
   width: 100%;
-  margin-top: clamp(1.25rem, 3vw, 2.5rem);
+  margin-top: clamp(1rem, 2.5vw, 1.85rem);
+  background: var(--bg-lift);
 }
 
 .booking__cta,
 .booking__contacts {
-  padding: clamp(2.75rem, 6vw, 4.5rem) var(--pad-x);
+  padding: clamp(2.25rem, 5vw, 3.5rem) var(--pad-x);
 }
 
 .booking__cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: var(--bg-lift);
-  max-width: 760px;
 }
 
 .booking .section-title {
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-size: clamp(2.55rem, 5.2vw, 4.35rem);
+}
+
+.booking .section-lead {
+  max-width: 26rem;
 }
 
 .booking__actions {
-  margin-top: 1.85rem;
+  margin-top: 1.65rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
 }
 
 .booking__note {
-  margin: 1.5rem 0 0;
+  margin: 1.35rem 0 0;
   font-size: 0.88rem;
   color: var(--ink-soft);
-  max-width: 28rem;
+  max-width: 26rem;
+}
+
+.booking__media {
+  margin: 0;
+  min-height: 16rem;
+  background: var(--graphite);
+  overflow: hidden;
+}
+
+.booking__media .media-zoom {
+  height: 100%;
+  min-height: inherit;
+}
+
+.booking__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 42% 48%;
 }
 
 .booking__contacts {
   background: var(--graphite);
   color: var(--on-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .contact-row {
   display: grid;
-  gap: 0.4rem;
-  padding: 1.2rem 0;
+  gap: 0.35rem;
+  padding: 1rem 0;
   border-bottom: 1px solid rgba(243, 239, 232, 0.14);
 }
 
@@ -1191,7 +1242,7 @@ a {
 
 .contact-row a {
   text-decoration: none;
-  font-size: 1.08rem;
+  font-size: 1.02rem;
 }
 
 .contact-row a:hover {
@@ -1199,7 +1250,7 @@ a {
 }
 
 .contact-sub {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: rgba(243, 239, 232, 0.55);
 }
 
@@ -1207,7 +1258,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.75rem;
 }
 
 .copy-btn {
@@ -1227,20 +1278,68 @@ a {
   color: #d8d0c3;
 }
 
-@media (min-width: 900px) {
+/* Mobile / tablet stack: CTA → photo → contacts */
+@media (max-width: 959px) {
+  .booking__media {
+    min-height: clamp(14rem, 48vw, 22rem);
+  }
+
+  .booking__media .media-zoom {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+  }
+}
+
+@media (min-width: 960px) {
+  /*
+    3-col binder: copy | interior photo | compact dark panel.
+    No max-width trap on CTA (that created the giant empty light column).
+    Photo is absolutely filled so intrinsic portrait ratio cannot inflate the band.
+  */
   .booking {
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns:
+      minmax(15.5rem, 0.92fr)
+      minmax(18rem, 1.2fr)
+      minmax(15rem, 0.78fr);
+    align-items: stretch;
+    min-height: min(28rem, 62vh);
   }
 
   .booking__cta {
     padding-left: max(var(--pad-x), calc((100vw - var(--max)) / 2 + var(--pad-x)));
+    padding-right: clamp(1.25rem, 2.5vw, 2rem);
+  }
+
+  .booking__media {
+    position: relative;
+    min-height: 0;
+    align-self: stretch;
+  }
+
+  .booking__media .media-zoom {
+    position: absolute;
+    inset: 0;
+    height: auto;
+    min-height: 0;
   }
 
   .booking__contacts {
     padding-right: max(var(--pad-x), calc((100vw - var(--max)) / 2 + var(--pad-x)));
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding-left: clamp(1.25rem, 2.5vw, 2rem);
+  }
+}
+
+/* Wide screens: keep photo dominant; tighten contact column */
+@media (min-width: 1280px) {
+  .booking {
+    grid-template-columns:
+      minmax(17rem, 0.85fr)
+      minmax(22rem, 1.35fr)
+      minmax(16rem, 0.7fr);
+  }
+
+  .booking__img {
+    object-position: 38% 45%;
   }
 }
 

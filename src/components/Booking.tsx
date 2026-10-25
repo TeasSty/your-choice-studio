@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { studio } from '../data/studio'
+import { asset } from '../lib/assets'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
 type BookingProps = {
@@ -46,6 +47,19 @@ export function Booking({ hallHint }: BookingProps) {
 
         <p className="booking__note">{studio.bookingNote}</p>
       </div>
+
+      <figure className="booking__media" data-reveal>
+        <div className="media-zoom">
+          <img
+            src={asset('images/halls/hall4.jpg')}
+            alt="Зал №4 YOUR CHOICE — интерьер с естественным светом (фото из VK)"
+            loading="lazy"
+            width={1200}
+            height={1600}
+            className="booking__img"
+          />
+        </div>
+      </figure>
 
       <aside className="booking__contacts" data-reveal aria-label="Контакты">
         <div className="contact-row">
